@@ -1,0 +1,8 @@
+FROM 172.20.31.131/cmp/java:8
+MAINTAINER xuye
+WORKDIR /var/cmp
+ADD ${SERVICE_NAME}.jar /var/cmp
+ADD current_version /var/cmp
+EXPOSE ${SERVICE_PORT}
+RUN rm /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+CMD ["java","-Xms4096m","-Xmx4096m","-jar","/var/cmp/${SERVICE_NAME}.jar"]

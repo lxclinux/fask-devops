@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<settings>
+<localRepository>/root/.m2</localRepository>
+  <!-- ��������Releases��Snapshots������������Maven���𹹽��ļ����ֿ� -->
+  <servers>
+    <server>
+      <id>skycloud-nexus-public-snapshots</id>
+      <username>admin</username>
+      <password>admin123</password>
+    </server>
+    <server>
+      <id>skycloud-nexus</id>
+      <username>admin</username>
+      <password>admin123</password>
+    </server>
+  </servers>
+  <!-- ���þ��� -->
+  <mirrors>
+    <mirror>
+      <!--This sends everything else to /public -->
+      <id>skycloud-nexus</id>
+      <mirrorOf>central</mirrorOf>
+      <url>http://172.20.2.110:8081/nexus/content/groups/public/</url>
+    </mirror>
+  </mirrors>
+  <profiles>
+    <profile>
+      <id>development</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>development</activeProfile>
+  </activeProfiles>
+</settings>
+
+
